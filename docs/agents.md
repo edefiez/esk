@@ -163,6 +163,27 @@ This will:
 
 ---
 
+## Fork an agent
+
+**agent:fork**: Fork an agent and its skills from another registry into yours.
+```bash
+esk agent:fork johndoe/esk-registry backend-dev --skills
+```
+Copies the agent definition, system prompt, and optionally all associated skills. Adds `forkedFrom` metadata. You can then edit freely.
+
+---
+
+## Compose an agent
+
+**agent:compose**: Interactively recompose an agent's skills with a live prompt preview.
+```bash
+esk agent:compose backend-dev
+esk agent:compose backend-dev --publish
+```
+Shows current skills, lets you add/remove with checkboxes, previews the generated prompt, and applies changes to registry + local project.
+
+---
+
 ## Agent system prompt format
 
 Generated prompts follow this structure:

@@ -156,6 +156,18 @@ esk project:skill:publish my-custom-skill
 
 ---
 
+## Upgrade skills from the registry
+
+**upgrade**: Update installed skills from the registry when newer versions exist.
+```bash
+esk upgrade              # interactive selection
+esk upgrade --dry-run    # preview without applying
+esk upgrade --yes        # apply all updates
+```
+Compares each local SKILL.md with the registry version, shows a report (up-to-date, outdated, local-only), and lets you selectively upgrade.
+
+---
+
 ## Reconcile skills and agents
 
 When a project has agents and skills on disk but the `esk.json` manifest is incomplete or missing:

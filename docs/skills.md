@@ -212,6 +212,38 @@ Stripe webhook handling and event processing
 
 ---
 
+## Fork a skill
+
+**skill:fork**: Fork a skill from a third-party registry into your own GitHub registry.
+```bash
+esk skill:fork johndoe/esk-registry graphql-api
+```
+Downloads SKILL.md, pushes to your registry, adds to registry.json with `forkedFrom` metadata. You can then customize it freely.
+
+---
+
+## Test a skill
+
+**skill:test**: Test a skill by launching Claude Code with only that skill loaded.
+```bash
+esk skill:test graphql-api
+esk skill:test graphql-api --print          # just show the prompt
+esk skill:test graphql-api --prompt "Build a schema for a blog"
+esk skill:test graphql-api --agent backend-dev  # use existing agent as base
+```
+
+---
+
+## Diff a skill
+
+**diff**: Compare a local skill (.claude/skills/) with the registry version.
+```bash
+esk diff graphql-api
+```
+Shows added/removed lines with colors. Useful before publishing or after forking.
+
+---
+
 ## Skill categories
 
 Default categories available:

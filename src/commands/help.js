@@ -23,12 +23,13 @@ function buildFullHelp() {
 
   const sections = [
     {
-      icon: '🔐', title: 'Authentication',
+      icon: '🔐', title: 'Authentication & Registry',
       commands: [
         ['esk github:login',              'OAuth Device Flow — opens your browser'],
         ['esk github:logout',             'Disconnect from GitHub'],
         ['esk github:status',             'Check connection status'],
         ['esk github:registry set <repo>','Set the private GitHub registry'],
+        ['esk registry:init',             'Create a new registry repo on GitHub'],
       ]
     },
     {
@@ -37,9 +38,11 @@ function buildFullHelp() {
         ['esk agent:list',                       'List all agents in the registry'],
         ['esk agent:show <id>',                  'Show agent details + skills'],
         ['esk agent:create',                     'Create a new agent (interactive or --yes)'],
+        ['esk agent:compose <id>',               'Recompose skills interactively with preview'],
         ['esk agent:add-skill <agent> <skill>',  'Assign a skill to an agent'],
         ['esk agent:remove-skill <agent> <sk>',  'Remove a skill from an agent'],
         ['esk agent:publish <id>',               'Push to GitHub'],
+        ['esk agent:fork <repo> <id>',           'Fork an agent from another registry'],
       ]
     },
     {
@@ -48,9 +51,12 @@ function buildFullHelp() {
         ['esk skill:list',               'List skills (--category to filter)'],
         ['esk skill:search <query>',     'Multi-source search (--all, --source)'],
         ['esk skill:create',             'Create a new skill (interactive or --yes)'],
-        ['esk skill:import <repo> <id>','Import from a third-party registry'],
+        ['esk skill:import <repo> <id>', 'Import from a third-party registry'],
+        ['esk skill:fork <repo> <id>',   'Fork a skill into your own registry'],
         ['esk skill:publish <id>',       'Publish to GitHub'],
         ['esk skill:add <agent> <sk>',   'Assign skill to agent in the global registry'],
+        ['esk skill:test <id>',          'Test a skill with Claude Code'],
+        ['esk diff <id>',                'Compare local skill with registry version'],
       ]
     },
     {
@@ -59,6 +65,7 @@ function buildFullHelp() {
         ['esk init',                              'Initialize .claude/ (interactive)'],
         ['esk project:status',                    'Full project audit'],
         ['esk project:reconcile',                 'Reconcile skills↔agents (--dry-run, --yes)'],
+        ['esk upgrade',                           'Update installed skills from the registry'],
         ['esk project:agent:add <id>',            'Add an agent to the project'],
         ['esk project:agent:remove <id>',         'Remove an agent from the project'],
         ['esk project:agent:add-skill <a> <sk>',  'Assign skill → agent (--install)'],

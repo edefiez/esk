@@ -122,6 +122,17 @@ All GitHub settings are stored in `~/.esk/config.json`:
 
 ---
 
+## Initialize a registry
+
+**registry:init**: Create a new registry repo on GitHub with the complete esk structure.
+```bash
+esk registry:init
+esk registry:init --name my-skills --private
+```
+Creates: repo on GitHub, registry.json, agents/ and skills/ directories, adds `esk-registry` topic, and sets it as your active registry. Perfect for getting started from scratch.
+
+---
+
 ## Required GitHub permissions
 
 The OAuth token requires:

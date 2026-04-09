@@ -78,6 +78,21 @@ esk project:skill:create \
   --yes --json
 ```
 
+### Fork a skill from another registry
+```bash
+esk skill:fork johndoe/esk-registry graphql-api --yes --json
+```
+
+### Test a skill
+```bash
+esk skill:test graphql-api --print --json
+```
+
+### Compare local vs registry
+```bash
+esk diff graphql-api --json
+```
+
 ### Agent management
 
 ```bash
@@ -95,6 +110,12 @@ esk project:agent:add-skill backend-dev graphql --install --yes --json
 
 # Remove a skill from an agent
 esk agent:remove-skill backend-dev graphql --yes --json
+
+# Fork an agent from another registry
+esk agent:fork johndoe/esk-registry backend-dev --skills --yes --json
+
+# Recompose an agent's skills interactively
+esk agent:compose backend-dev --publish --json
 ```
 
 ### Create a new agent
@@ -120,6 +141,9 @@ esk agent:create \
    esk skill:search "<query>" --json
    → Choose the best source
    esk project:skill:install <id> --agent <agent> --yes --json
+
+2b. If the skill exists in another registry → fork it:
+    esk skill:fork johndoe/esk-registry <id> --yes --json
 
 3. If the skill doesn't exist anywhere:
    esk project:skill:create --id <id> --category <cat> --description "<desc>" --yes --json
@@ -208,3 +232,17 @@ Reconcile distinguishes two types of suggestions:
 - **? Disk** (unchecked) — skill present on disk but not in the registry → requires manual validation
 
 In `--yes` mode, only **registry** associations are applied automatically.
+
+### Upgrade skills
+```bash
+# Check for updates
+esk upgrade --dry-run --json
+
+# Apply all updates
+esk upgrade --yes --json
+```
+
+### Initialize a new registry
+```bash
+esk registry:init --name my-registry --yes --json
+```

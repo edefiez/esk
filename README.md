@@ -50,6 +50,7 @@ esk init
 | `esk github:status` | Check connection status | `esk github:status --json` |
 | `esk github:registry set <repo>` | Set the private GitHub registry | `esk github:registry set edefiez/esk-registry` |
 | `esk github:registry get` | Show configured registry | `esk github:registry get` |
+| `esk registry:init` | Create a new registry repo on GitHub with base structure | `esk registry:init --name my-registry` |
 
 ### Agents
 
@@ -60,6 +61,8 @@ esk init
 | `esk agent:create` | Create a new agent (interactive or `--yes`) | `esk agent:create --id carlos --name Carlos --role "GraphQL Expert" --model claude-sonnet-4-6 --yes` |
 | `esk agent:add-skill <agent> <skill>` | Assign a skill to an agent | `esk agent:add-skill backend-dev graphql-api` |
 | `esk agent:remove-skill <agent> <skill>` | Remove a skill from an agent | `esk agent:remove-skill backend-dev graphql-api` |
+| `esk agent:fork <repo> <agentId>` | Fork an agent and its skills from another registry | `esk agent:fork johndoe/esk-registry backend-dev --skills` |
+| `esk agent:compose <agentId>` | Interactively recompose an agent's skills with prompt preview | `esk agent:compose backend-dev --publish` |
 | `esk agent:publish <id>` | Push to GitHub | `esk agent:publish backend-dev --json` |
 
 ### Skills
@@ -71,6 +74,8 @@ esk init
 | `esk skill:create` | Create a new skill (interactive or `--yes`) | `esk skill:create --id stripe-webhooks --category backend --description "Stripe webhook handling" --yes` |
 | `esk skill:import <repo> <id>` | Import from a third-party registry | `esk skill:import johndoe/esk-registry graphql --install` |
 | `esk skill:publish <id>` | Publish to GitHub | `esk skill:publish stripe-webhooks` |
+| `esk skill:fork <repo> <skillId>` | Fork a skill from a third-party registry into your own | `esk skill:fork johndoe/esk-registry graphql-api` |
+| `esk skill:test <skillId>` | Test a skill by running Claude Code with only that skill loaded | `esk skill:test graphql-api --print` |
 | `esk skill:add <agent> <skill>` | Assign skill to agent in the global registry | `esk skill:add backend-dev graphql-api` |
 
 ### Project management
@@ -87,6 +92,8 @@ esk init
 | `esk project:skill:install <id>` | Install a skill from the registry | `esk project:skill:install graphql --agent backend-dev --yes` |
 | `esk project:skill:create` | Create + install locally | `esk project:skill:create --id my-skill --category backend --yes` |
 | `esk project:skill:publish <id>` | Promote to the registry | `esk project:skill:publish my-skill` |
+| `esk upgrade` | Update installed skills in `.claude/` when registry has newer versions | `esk upgrade --dry-run` |
+| `esk diff <skillId>` | Compare a local skill with the registry version | `esk diff graphql-api` |
 
 ### Discovery
 
@@ -128,6 +135,34 @@ esk project:skill:install graphql --agent backend-dev --yes --json
 esk project:skill:create --id "stripe-webhooks" --category backend \
   --description "Stripe webhook handling" --agent backend-dev --yes --json
 ```
+
+---
+
+## Forking
+
+Fork skills and agents from any third-party registry into your own. This lets you use someone else's work as a starting point, customize it, and publish your version.
+
+**Fork a skill:**
+
+```bash
+# Copy a skill from another registry into yours
+esk skill:fork johndoe/esk-registry graphql-api
+
+# Edit the forked skill locally, then publish your version
+esk skill:publish graphql-api
+```
+
+**Fork an agent (with its skills):**
+
+```bash
+# Fork an agent and all its associated skills
+esk agent:fork johndoe/esk-registry backend-dev --skills
+
+# Recompose the agent's skills to fit your needs
+esk agent:compose backend-dev --publish
+```
+
+Forked items are fully owned by you once they land in your registry -- you can modify, rename, or extend them freely.
 
 ---
 
@@ -199,6 +234,7 @@ Detailed documentation is available in the [`docs/`](./docs/) folder:
 - [Project Management](./docs/project.md) — Initializing projects, reconciliation
 - [Sources](./docs/sources.md) — Managing skill search sources
 - [Discovery](./docs/discovery.md) — Exploring registries and projects
+- [Forking](./docs/forking.md) — Forking skills and agents from other registries
 - [Preferences](./docs/preferences.md) — User configuration
 
 
