@@ -56,9 +56,9 @@ esk project:status
 
 🤖  Agents
 ────────────────────────────────────────────────
-  ✓ sofiane        start-session, end-session, writing-plans, ...
-  ✓ jerome         nestjs-best-practices, prisma-client-api, ...
-  ✗ file missing   bruno
+  ✓ orchestrator        start-session, end-session, writing-plans, ...
+  ✓ backend-dev         nestjs-best-practices, prisma-client-api, ...
+  ✗ file missing   reviewer
 
 🛠️  Installed skills
 ────────────────────────────────────────────────
@@ -80,7 +80,7 @@ esk project:status --json
 ## Add an agent to the project
 
 ```bash
-esk project:agent:add jerome
+esk project:agent:add backend-dev
 ```
 
 Downloads the agent's system prompt from the registry and adds it to `.claude/agents/`.
@@ -88,7 +88,7 @@ Downloads the agent's system prompt from the registry and adds it to `.claude/ag
 ### Also install default skills
 
 ```bash
-esk project:agent:add jerome --install-skills
+esk project:agent:add backend-dev --install-skills
 ```
 
 ---
@@ -96,7 +96,7 @@ esk project:agent:add jerome --install-skills
 ## Remove an agent from the project
 
 ```bash
-esk project:agent:remove jerome
+esk project:agent:remove backend-dev
 ```
 
 Removes the `.md` file and updates `esk.json`.
@@ -106,7 +106,7 @@ Removes the `.md` file and updates `esk.json`.
 ## Assign a skill to an agent
 
 ```bash
-esk project:agent:add-skill jerome graphql --install
+esk project:agent:add-skill backend-dev graphql --install
 ```
 
 The `--install` flag also downloads the SKILL.md if it's not already installed.
@@ -116,12 +116,12 @@ The `--install` flag also downloads the SKILL.md if it's not already installed.
 ## View active skills for an agent
 
 ```bash
-esk project:agent:status jerome
+esk project:agent:status backend-dev
 ```
 
 **Example output:**
 ```
-🤖  jerome — Active skills
+🤖  backend-dev — Active skills
 ────────────────────────────────────────────────
   ✓ nestjs-best-practices
   ✓ prisma-client-api
@@ -141,7 +141,7 @@ Downloads the SKILL.md file from GitHub into `.claude/skills/graphql/SKILL.md`.
 ### Install and assign to an agent
 
 ```bash
-esk project:skill:install graphql --agent jerome --yes
+esk project:skill:install graphql --agent backend-dev --yes
 ```
 
 ---
@@ -171,7 +171,7 @@ esk project:reconcile --dry-run
   ◈ Project Reconciliation
   ──────────────────────────────────────────────────────────
 
-  Agents on disk     : sofiane, jerome, bruno
+  Agents on disk     : orchestrator, backend-dev, reviewer
   Skills on disk     : 24 skill(s)
   Agents in esk.json : 0
 
@@ -180,11 +180,11 @@ esk project:reconcile --dry-run
 🔗  Suggested associations (3 agent(s))
 ────────────────────────────────────────────────
 
-  🤖 Sofiane — Lead Dev Full-Stack & Orchestrator
+  🤖 Orchestrator — Lead Developer & Task Coordinator
      ✓ Registry : start-session, end-session, writing-plans
      ? Disk     : custom-tool
 
-  🤖 Jerome — Backend Senior
+  🤖 Backend Dev — Backend Senior Engineer
      ✓ Registry : nestjs-best-practices, prisma-client-api
 ```
 
@@ -213,9 +213,9 @@ my-project/
 ├── .claude/
 │   ├── esk.json              # Project manifest
 │   ├── agents/
-│   │   ├── sofiane.md        # Agent system prompt
-│   │   ├── jerome.md
-│   │   └── bruno.md
+│   │   ├── orchestrator.md        # Agent system prompt
+│   │   ├── backend-dev.md
+│   │   └── reviewer.md
 │   └── skills/
 │       ├── graphql/
 │       │   └── SKILL.md
@@ -231,8 +231,8 @@ my-project/
 {
   "project": "my-project",
   "agents": [
-    { "id": "sofiane", "name": "Sofiane", "skills": ["start-session", "end-session"] },
-    { "id": "jerome", "skills": ["nestjs-best-practices", "prisma-client-api"] }
+    { "id": "orchestrator", "name": "Orchestrator", "skills": ["start-session", "end-session"] },
+    { "id": "backend-dev", "skills": ["nestjs-best-practices", "prisma-client-api"] }
   ],
   "skills": ["start-session", "end-session", "nestjs-best-practices", "prisma-client-api"]
 }

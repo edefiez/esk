@@ -11,10 +11,9 @@ import {
   outputResult, setJsonMode, isJsonMode
 } from '../utils/display.js';
 
-const SKILL_CATEGORIES = [
-  'perso', 'meta', 'quality', 'tooling',
-  'backend', 'frontend', 'flutter', 'devops',
-  'projects/dashmenu', 'projects/dashkitchen', 'projects/kiosk', 'other'
+const DEFAULT_SKILL_CATEGORIES = [
+  'meta', 'quality', 'tooling',
+  'backend', 'frontend', 'mobile', 'devops', 'other'
 ];
 
 export function registerSkillCommands(program) {
@@ -115,7 +114,7 @@ export function registerSkillCommands(program) {
         if (!label) label = await input({ message: 'Display label:', default: id });
         if (!category) category = await select({
           message: 'Category:',
-          choices: SKILL_CATEGORIES.map(c => ({ value: c, name: c }))
+          choices: DEFAULT_SKILL_CATEGORIES.map(c => ({ value: c, name: c }))
         });
         if (!description) description = await input({ message: 'Short description:' });
       }
@@ -127,7 +126,7 @@ export function registerSkillCommands(program) {
       const skillContent = generateSkillTemplate(id, label || id, description || '', category || 'other');
 
       const config = await getConfig();
-      const results = { id, label: label || id, category, description, filesCreated: [], synced: false };
+      const results = { id, label: label || id, category, description, filesCreated: [] };
 
       // Install locally
       if (opts.install) {

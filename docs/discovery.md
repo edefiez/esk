@@ -28,8 +28,8 @@ Scans the current directory for `.claude/` and `registry.json`, then shows:
 
 🤖  Installed agents (2)
 ────────────────────────────────────────────────
-  ✓ sofiane          Sofiane — Lead Dev Full-Stack            12 skills
-  ✓ jerome           Jerome — Backend Senior                  8 skills
+  ✓ orchestrator     Orchestrator — Lead Developer             6 skills
+  ✓ backend-dev      Backend Dev — Backend Senior Engineer     3 skills
 
 🛠️  Installed skills (24)
 ────────────────────────────────────────────────
@@ -74,8 +74,8 @@ esk discover edefiez/esk-registry
 
 🤖  Agents (12)
 ────────────────────────────────────────────────
-  Sofiane       Lead Dev Full-Stack & Orchestrator    claude-opus-4-6    12 skills
-  Jerome        Backend Senior                        claude-opus-4-6    8 skills
+  Orchestrator  Lead Developer & Task Coordinator     claude-opus-4-6    6 skills
+  Backend Dev   Backend Senior Engineer               claude-opus-4-6    3 skills
   ...
 
 🛠️  Skills (59)

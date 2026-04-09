@@ -1,8 +1,7 @@
 import { getConfig } from './config.js';
 
 const GH_API = 'https://api.github.com';
-// GitHub OAuth App "esk" Client ID — replace with the real one after creation
-const ESK_CLIENT_ID = 'Ov23liXXXXXXXXXXXXXX';
+const ESK_CLIENT_ID = process.env.ESK_GITHUB_CLIENT_ID || 'Ov23liYourClientIdHere';
 
 // ─── Auth ────────────────────────────────────────────────────────────────────
 

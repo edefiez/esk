@@ -103,7 +103,7 @@ export function registerAgentCommands(program) {
       let defaultSkills = opts.skills ? opts.skills.split(',').map(s => s.trim()) : [];
 
       if (!opts.yes) {
-        if (!name) name = await input({ message: 'Agent name (e.g. Jerome):' });
+        if (!name) name = await input({ message: 'Agent name (e.g. Alex):' });
         if (!id) id = await input({ message: 'ID (slug):', default: slugify(name) });
         if (!role) role = await input({ message: 'Role:' });
         if (!opts.model) {

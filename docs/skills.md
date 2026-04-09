@@ -30,7 +30,7 @@ esk skill:list
 ```bash
 esk skill:list --category backend
 esk skill:list --category frontend
-esk skill:list --category projects/dashkitchen
+esk skill:list --category backend
 ```
 
 ### JSON mode
@@ -175,12 +175,12 @@ esk skill:publish stripe-webhooks --yes --json
 ## Assign a skill to an agent in the global registry
 
 ```bash
-esk skill:add jerome graphql-api
+esk skill:add backend-dev graphql-api
 ```
 
 **Example output:**
 ```
-  ✓ Skill graphql-api → agent jerome
+  ✓ Skill graphql-api → agent backend-dev
 ```
 
 ---

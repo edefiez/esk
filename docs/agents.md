@@ -17,9 +17,9 @@ esk agent:list
 
   NAME        ROLE                                  MODEL                 SKILLS
   ──────────────────────────────────────────────────────────────────────────────────
-  Sofiane     Lead Dev Full-Stack & Orchestrator    claude-opus-4-6       12 skills
-  Jerome      Backend Senior                        claude-opus-4-6       8 skills
-  Bruno       Code Reviewer                         claude-sonnet-4-6     4 skills
+  Orchestrator  Lead Developer & Task Coordinator   claude-opus-4-6       6 skills
+  Backend Dev   Backend Senior Engineer              claude-opus-4-6       3 skills
+  Reviewer      Code Reviewer                       claude-sonnet-4-6     4 skills
 ```
 
 ### JSON mode
@@ -33,15 +33,15 @@ esk agent:list --json
 ## Show agent details
 
 ```bash
-esk agent:show jerome
+esk agent:show backend-dev
 ```
 
 **Example output:**
 ```
-  ● Jerome — Backend Senior
+  ● Backend Dev — Backend Senior Engineer
     Model: claude-opus-4-6
 
-🛠️  Skills (8)
+🛠️  Skills (3)
 ────────────────────────────────────────────────
   ✓ nestjs-best-practices              NestJS architecture, modules, DI...
   ✓ prisma-client-api                  Prisma Client API patterns
@@ -52,7 +52,7 @@ esk agent:show jerome
 ### JSON mode
 
 ```bash
-esk agent:show jerome --json
+esk agent:show backend-dev --json
 ```
 
 ---
@@ -108,14 +108,14 @@ This will:
 ## Add a skill to an agent
 
 ```bash
-esk agent:add-skill jerome graphql-api
+esk agent:add-skill backend-dev graphql-api
 ```
 
 This updates `registry.json` on GitHub, adding the skill to the agent's `defaultSkills` array.
 
 **Example output:**
 ```
-  ✓ graphql-api → jerome
+  ✓ graphql-api → backend-dev
 ```
 
 ---
@@ -123,12 +123,12 @@ This updates `registry.json` on GitHub, adding the skill to the agent's `default
 ## Remove a skill from an agent
 
 ```bash
-esk agent:remove-skill jerome graphql-api
+esk agent:remove-skill backend-dev graphql-api
 ```
 
 **Example output:**
 ```
-  ✓ Skill graphql-api removed from jerome
+  ✓ Skill graphql-api removed from backend-dev
 ```
 
 ---
@@ -138,17 +138,17 @@ esk agent:remove-skill jerome graphql-api
 Regenerate the agent's system prompt from the current registry state and push to GitHub:
 
 ```bash
-esk agent:publish jerome
+esk agent:publish backend-dev
 ```
 
 This will:
 1. Read the agent's current skills from `registry.json`
-2. Generate a new system prompt (`agents/jerome.md`)
+2. Generate a new system prompt (`agents/backend-dev.md`)
 3. Push to GitHub
 
 **Example output:**
 ```
-  ✓ Agent jerome published
+  ✓ Agent backend-dev published
 ```
 
 ---

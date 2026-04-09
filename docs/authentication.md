@@ -127,3 +127,22 @@ All GitHub settings are stored in `~/.esk/config.json`:
 The OAuth token requires:
 - `repo` — read/write access to registry repos (for publishing agents and skills)
 - `read:user` — read your GitHub profile (for displaying your username)
+
+---
+
+## GitHub OAuth App setup (for self-hosting)
+
+If you're running your own fork of esk, you need to create a GitHub OAuth App:
+
+1. Go to [github.com/settings/developers](https://github.com/settings/developers)
+2. Click "New OAuth App"
+3. Set the callback URL to `http://localhost` (not used in Device Flow, but required)
+4. Enable **Device Flow** in the app settings
+5. Copy the **Client ID**
+6. Set it via environment variable:
+
+```bash
+export ESK_GITHUB_CLIENT_ID="Ov23liYourRealClientId"
+```
+
+Or add it to your shell profile (`~/.zshrc`, `~/.bashrc`).

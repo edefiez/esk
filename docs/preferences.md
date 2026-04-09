@@ -97,4 +97,4 @@ These options are available on all esk commands:
 | `--yes` | Skip interactive prompts (agent mode) | `esk init --yes` |
 | `--json` | Parsable JSON output (agent mode) | `esk project:status --json` |
 
-These are especially useful when esk is used by an orchestrator agent (like Sofiane) that needs non-interactive, machine-readable output.
+These are especially useful when esk is used by an orchestrator agent that needs non-interactive, machine-readable output.

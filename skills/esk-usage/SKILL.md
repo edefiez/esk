@@ -26,7 +26,7 @@ to manage agents and skills during a work session.
 esk project:status --json
 
 # Active skills for a specific agent
-esk project:agent:status jerome --json
+esk project:agent:status backend-dev --json
 
 # List all skills in the registry
 esk skill:list --json
@@ -51,7 +51,7 @@ esk skill:search "graphql" --source anthropic-official --json
 esk project:skill:install graphql --yes --json
 
 # From the registry + assign to an agent
-esk project:skill:install graphql --agent jerome --yes --json
+esk project:skill:install graphql --agent backend-dev --yes --json
 ```
 
 ### Import a skill from a third-party registry
@@ -66,7 +66,7 @@ esk project:skill:create \
   --id "graphql-resolvers" \
   --category backend \
   --description "GraphQL Apollo resolver management" \
-  --agent jerome \
+  --agent backend-dev \
   --yes --json
 
 # Local + published to the global registry
@@ -85,16 +85,16 @@ esk project:skill:create \
 esk agent:list --json
 
 # Agent details and skills
-esk agent:show jerome --json
+esk agent:show backend-dev --json
 
 # Add an agent to the current project
-esk project:agent:add jerome --install-skills --yes --json
+esk project:agent:add backend-dev --install-skills --yes --json
 
 # Assign a skill to an agent in this project
-esk project:agent:add-skill jerome graphql --install --yes --json
+esk project:agent:add-skill backend-dev graphql --install --yes --json
 
 # Remove a skill from an agent
-esk agent:remove-skill jerome graphql --yes --json
+esk agent:remove-skill backend-dev graphql --yes --json
 ```
 
 ### Create a new agent
@@ -195,8 +195,8 @@ esk project:status --json
   "status": "applied",
   "applied": 8,
   "details": [
-    { "agent": "sofiane", "skills": ["start-session", "end-session", "writing-plans"] },
-    { "agent": "jerome",  "skills": ["nestjs-best-practices", "prisma-cli"] }
+    { "agent": "orchestrator", "skills": ["start-session", "end-session", "writing-plans"] },
+    { "agent": "backend-dev",  "skills": ["nestjs-best-practices", "prisma-cli"] }
   ]
 }
 ```
